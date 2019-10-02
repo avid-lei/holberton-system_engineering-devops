@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#while implementation of #1
+COUNT=0
+while [ $COUNT -lt 10 ]
+do
+	echo "Holberton School"
+	((COUNT++))
+done
