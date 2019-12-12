@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-#install nginx on server listening to 80
+# install nginx on server listening to 80
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
-echo "Holberton School for the win!" | sudo tee /var/www/html/index.nginx-debian.html >/dev/null
+echo "Holberton School for the win!" > /var/www/html/index.nginx-debian.html
 sudo /etc/init.d/nginx start
