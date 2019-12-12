@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#server to have a custom 404 page
+#!/usr/bin/env bash
+# Redirect /redirect_me to 301 permanent
+apt-get -y update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+echo Holberton School > /var/www/html/index.html
+service nginx start
+sed -i "/server_name _/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/xyz.html
+err_str="error_page 404 /xyz.html;\nlocation = /xyz.html {\nroot /usr/share/nginx/html;\ninternal;\n}"
+sed -i "/server_name _/a $err_str" /etc/nginx/sites-available/default
+service nginx restart
