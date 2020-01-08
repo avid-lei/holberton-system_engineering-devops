@@ -11,6 +11,7 @@ echo
 backend back
         mode http
         balance roundrobin
-        server 810-web-01 34.74.195.119 check
-        server 810-web-02 104.196.96.41 check" >> /etc/haproxy/haproxy.cfg
+        server 810-web-01 34.74.195.119:80 check
+        server 810-web-02 104.196.96.41:80 check
+        " >> /etc/haproxy/haproxy.cfg
 service haproxy restart
