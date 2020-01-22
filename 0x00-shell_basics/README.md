@@ -1,4 +1,4 @@
-#0x00. Shell, basics
+# 0x00. Shell, basics
 
 ## Description
 What you should learn from this project:
