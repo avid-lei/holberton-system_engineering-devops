@@ -3,13 +3,20 @@
 ## Description
 What you should learn from this project:
 
-* What do the commands chmod, sudo, su, chown, chgrp do
-* Linux file permissions
-* How to represent each of the three sets of permissions (owner, group, and other) as a single digit
-* How to change permissions, owner and group of a file
-* Why can’t a normal user chown a file
-* How to run a command with root privileges
-* How to change user ID or become superuser
+* What do the commands or built-ins cd, pwd, ls do
+* How to navigate the filesystem
+* What are the . and .. directories
+* What is the working directory, how to print it and how to change it
+* What is the root directory
+* What is the home directory, and how to go there
+* What is the difference between the root directory and the home directory of the user root
+* What are the characteristics of hidden files and how to list them
+* What does the command cd - do
+* What is the shell
+* What is the difference between a terminal and a shell
+* What is the shell prompt
+* How to use the history (the basics)
+
 
 ---
 
