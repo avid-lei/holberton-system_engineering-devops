@@ -102,4 +102,5 @@ relay-log               = /var/log/mysql/mysql-relay-bin.log
 #
 # ssl-ca=/etc/mysql/cacert.pem
 # ssl-cert=/etc/mysql/server-cert.pem
+hello
 # ssl-key=/etc/mysql/server-key.pem
