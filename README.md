@@ -1,6 +1,6 @@
 # System Engineering Devops
 
-This repository contains Bash scripts for my System Engineering Devops projects as part of the Holberton School curriculum. Topics covered in these projects include Linux commands, regex and more.
+This repository contains Bash scripts for my System Engineering Devops projects as part of the Holberton School curriculum. Topics covered in these projects include Linux commands, networking, server configurations, mySQL and more.
 
  Projects 
 --------|
