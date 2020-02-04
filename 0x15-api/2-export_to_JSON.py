@@ -21,8 +21,8 @@ if __name__ == '__main__':
         user = {}
         if str(x.get("userId")) == argv[1]:
             user['username'] = name
-            user['task'] = str(x.get('title'))
-            user['completed'] = str(x.get('completed'))
+            user['task'] = x.get('title')
+            user['completed'] = x.get('completed')
             tasks.append(user)
 
     users = {argv[1]: tasks}
