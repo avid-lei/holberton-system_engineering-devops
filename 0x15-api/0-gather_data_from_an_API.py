@@ -2,8 +2,8 @@
 """return info about todo life using RESTAPI"""
 
 if __name__ == '__main__':
-    from sys import argv
     import requests
+    from sys import argv
 
     urlID = requests.get('https://jsonplaceholder.typicode.com/users/{}'.
                          format(argv[1]))
