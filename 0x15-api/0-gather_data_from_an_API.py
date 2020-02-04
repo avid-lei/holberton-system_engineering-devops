@@ -28,4 +28,4 @@ if __name__ == '__main__':
     for x in jTD:
         if str(x.get("userId")) == argv[1]:
             if x.get('completed'):
-                print('\t{}'.format(x.get('title')))
+                print('\t {}'.format(x.get('title')))
