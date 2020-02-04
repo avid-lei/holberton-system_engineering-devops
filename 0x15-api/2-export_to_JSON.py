@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""export in CSV format"""
+"""export in json format"""
 
 if __name__ == '__main__':
     import json
