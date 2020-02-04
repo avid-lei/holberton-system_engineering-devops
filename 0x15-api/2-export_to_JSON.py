@@ -20,10 +20,10 @@ if __name__ == '__main__':
     for x in jTD:
         user = {}
         if str(x.get("userId")) == argv[1]:
-                user['username'] = name
-                user['task'] = str(x.get('title'))
-                user['completed'] = str(x.get('completed'))
-                tasks.append(user)
+            user['username'] = name
+            user['task'] = str(x.get('title'))
+            user['completed'] = str(x.get('completed'))
+            tasks.append(user)
 
     users = {argv[1]: tasks}
     with open(argv[1] + ".json", "w") as f:
