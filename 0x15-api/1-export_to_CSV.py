@@ -11,7 +11,7 @@ if __name__ == '__main__':
                          format(argv[1]))
 
     jID = urlID.json()
-    name = jID.get('name')
+    name = jID.get('username')
 
     urlTD = requests.get('https://jsonplaceholder.typicode.com/todos')
     jTD = urlTD.json()
