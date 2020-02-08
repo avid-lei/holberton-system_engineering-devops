@@ -1,31 +1,21 @@
 #!/usr/bin/python3
-"""return info about todo life using RESTAPI"""
+import requests
+import sys
 
-if __name__ == '__main__':
-    import requests
-    from sys import argv
+user_id = sys.argv[1]
+name = requests.get('https://jsonplaceholder.typicode.com/users', params={'id': user_id})
+name = name.json()[0].get('name')
 
-    urlID = requests.get('https://jsonplaceholder.typicode.com/users/{}'.
-                         format(argv[1]))
+todos = requests.get('https://jsonplaceholder.typicode.com/todos', params={'userId': user_id})
+todos = todos.json()
+total_task = len(todos)
 
-    jID = urlID.json()
-    name = jID.get('name')
+todos_complete = [task for task in todos if task['completed']]
+completed_task = len(todos_complete)
 
-    urlTD = requests.get('https://jsonplaceholder.typicode.com/todos')
-    jTD = urlTD.json()
+print("Employee {} is done with tasks({}/{}):".format(name, completed_task, total_task))
+for task in todos_complete:
+    print("\t {}".format(task.get('title')))
 
-    tt = 0
-    td = 0
 
-    for x in jTD:
-        if str(x.get("userId")) == argv[1]:
-            tt += 1
-            if x.get('completed'):
-                td += 1
 
-    print('Employee {} is done with tasks({}/{}):'.format(name, td, tt))
-
-    for x in jTD:
-        if str(x.get("userId")) == argv[1]:
-            if x.get('completed'):
-                print('\t {}'.format(x.get('title')))
