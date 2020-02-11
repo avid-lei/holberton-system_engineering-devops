@@ -14,7 +14,7 @@ def top_ten(subreddit):
                         headers=headers, allow_redirects=False)
 
     if http.status_code >= 300:
-        print('None')
+        print(None)
     else:
         http = http.json()
         lists = [v for k, v in http.items() if k == 'data']
