@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Reddit API for top 10 of subreddit"""
 
 
 def top_ten(subreddit):
@@ -9,7 +10,7 @@ def top_ten(subreddit):
 
     http = requests.get('https://www.reddit.com/r/{}/top.json'
                         .format(subreddit), params={'limit': 10},
-                        headers=headers)
+                        headers=headers, allow_redirects=False)
 
     if http.status_code == 404:
         print('None')
