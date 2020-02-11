@@ -1,30 +1,28 @@
 #!/usr/bin/python3
-"""export in json format"""
 
 if __name__ == '__main__':
     import json
     import requests
-    from sys import argv
+    import sys
 
-    urlID = requests.get('https://jsonplaceholder.typicode.com/users/{}'.
-                         format(argv[1]))
+    user_id = sys.argv[1]
+    user = requests.get('https://jsonplaceholder.typicode.com/users/{}'.
+                        format(user_id))
+    username = user.json().get('username')
 
-    jID = urlID.json()
-    name = jID.get('username')
+    todos = requests.get('https://jsonplaceholder.typicode.com/todos/',
+                         params={'userId': user_id})
+    todos = todos.json()
 
-    urlTD = requests.get('https://jsonplaceholder.typicode.com/todos')
-    jTD = urlTD.json()
+    emp = {}
+    emp[user_id] = []
 
-    tasks = []
+    for tasks in todos:
+        t = {}
+        t['username'] = username
+        t['task'] = tasks.get('title')
+        t['completed'] = tasks.get('completed')
+        emp[user_id].append(t)
 
-    for x in jTD:
-        user = {}
-        if str(x.get("userId")) == argv[1]:
-            user['username'] = name
-            user['task'] = x.get('title')
-            user['completed'] = x.get('completed')
-            tasks.append(user)
-
-    users = {argv[1]: tasks}
-    with open(argv[1] + ".json", "w") as f:
-        f.write(json.dumps(users))
+    with open('{}.json'.format(user_id), 'w') as f:
+        json.dump(emp, f)
