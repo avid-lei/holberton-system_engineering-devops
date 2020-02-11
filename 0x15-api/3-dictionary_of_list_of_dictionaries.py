@@ -1,30 +1,31 @@
 #!/usr/bin/python3
-"""export dict list of dict"""
 
 if __name__ == '__main__':
     import json
     import requests
 
-    urlID = requests.get('https://jsonplaceholder.typicode.com/users/')
-    jID = urlID.json()
+    all_emps = {}
 
-    users = {}
-    for user in jID:
-        tasks = []
+    users = requests.get('https://jsonplaceholder.typicode.com/users').json()
+
+    for user in users:
+
         user_id = user.get('id')
         username = user.get('username')
-        td = requests.get('https://jsonplaceholder.typicode.com/todos' +
-                          '?userId={:}'.format(user_id))
-        jtd = td.json()
 
-        for x in jtd:
-            user = {}
-            user['username'] = username
-            user['task'] = x.get('title')
-            user['completed'] = x.get('completed')
-            tasks.append(user)
+        all_todos = []
 
-        users[user_id] = tasks
+        todos = requests.get('https://jsonplaceholder.typicode.com/todos',
+                             params={'userId': user_id}).json()
 
-    with open("todo_all_employees.json", "w") as f:
-        json.dump(users, f)
+        for task in todos:
+            todo = {}
+            todo['username'] = username
+            todo['task'] = task.get('title')
+            todo['completed'] = task.get('completed')
+            all_todos.append(todo)
+
+        all_emps[user_id] = all_todos
+
+    with open('todo_all_employees.json', 'w') as f:
+        json.dump(all_emps, f)
