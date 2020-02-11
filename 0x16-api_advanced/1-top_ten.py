@@ -13,11 +13,11 @@ def top_ten(subreddit):
                         .format(subreddit), params={'limit': 10},
                         headers=headers, allow_redirects=False)
 
-    if http.status_code >= 300:
+    if http.status_code == 404:
         print(None)
     else:
         http = http.json()
-        lists = [v for k, v in http.items() if k == 'data']
-        lists = lists[0].get('children')
-        for l in lists:
+        data = http.get('data')
+        data = data.get('children')
+        for l in data:
             print(l.get('data').get('title'))
