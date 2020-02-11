@@ -9,7 +9,7 @@ def top_ten(subreddit):
                ' Intel Mac OS X 10_10_1) AppleWebKit/537.36 ' +
                '(KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
 
-    http = requests.get('https://www.reddit.com/r/{}/top.json?limit=10'
+    http = requests.get('https://www.reddit.com/r/{}/hot.json?limit=10'
                         .format(subreddit), headers=headers,
                         allow_redirects=False)
 
